@@ -26,6 +26,12 @@ private String  name;
 private String  email;
 private String  phone_number;
 
-private Member() {}
 
+private Member() {}
+public Member(String  username, String  name, String  email, String  phone_number){
+                this.username = username;
+                this.name = name;
+                this.email= email;
+                this.phone_number = phone_number;
+ }
 }
