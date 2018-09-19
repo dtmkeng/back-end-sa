@@ -1,6 +1,9 @@
 package com.sa.sademo.controller;
 import com.sa.sademo.entity.Member;
 import com.sa.sademo.repository.MemberRepository;
+//time
+// import java.time.LocalDateTime;
+// import java.time.format.DateTimeFormatter;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +26,6 @@ class MemberController {
         return memberRepository.findAll().stream()
                 .collect(Collectors.toList());
     }
-
+   
    
 }

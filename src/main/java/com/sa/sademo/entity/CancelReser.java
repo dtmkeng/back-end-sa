@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import lombok.*;
 import java.util.*;
+// import java.time.LocalDate;
 
 @Entity  
 @Data  
@@ -17,7 +18,8 @@ public class CancelReser {
 @Id  
 @GeneratedValue 
 @NotNull
-private Long cancelReser_id;
+private String cancelId;
+
 @NotNull
 private String  comment;
 @NotNull
@@ -38,10 +40,10 @@ private Studio  studio;
  
 private CancelReser() {}
 
-public CancelReser(Long cancelReser_id, String  comment, String  title, Date  date_submit) { 
-        this.cancelReser_id = cancelReser_id;
+public CancelReser(String cancelId, String  comment, String  title) {     
+        this.cancelId = cancelId;
         this.comment = comment;
         this.title  = title;
-        this.date_submit = date_submit;
+        // this.date_submit = LocalDate.now();
     }
 }
