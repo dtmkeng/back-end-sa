@@ -16,9 +16,8 @@ import java.util.*;
 public class Photographer {
 
 @Id  
-@GeneratedValue
 @NotNull   
-private Long photograp_id;
+private String photograpId;
 @NonNull
 private String  name;
 @NotNull
@@ -26,10 +25,12 @@ private String  detail;
 @NotNull
 private String  phonenumber;
 
+
+
 private Photographer() {}
 
-public Photographer(Long photograp_id, String  name, String  detail, String  phonenumber ) { 
-        this.photograp_id = photograp_id;
+public Photographer(String photograpId, String  name, String  detail, String  phonenumber ) { 
+        this.photograpId = photograpId;
         this.name  = name;
         this.detail = detail;
         this.phonenumber = phonenumber;

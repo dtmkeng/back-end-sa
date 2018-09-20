@@ -16,9 +16,8 @@ import java.util.*;
 public class Studio {
 
 @Id  
-@GeneratedValue
 @NotNull   
-private Long studio_id;
+private String studioId;
 @NotNull
 private String  name;
 @NotNull
@@ -28,8 +27,8 @@ private String  phonenumber;
 
 private Studio() {}
 
-public Studio(Long studio_id, String  name,  String  detail, String  phonenumber) { 
-        this.studio_id = studio_id;
+public Studio(String studioId, String  name,  String  detail, String  phonenumber) { 
+        this.studioId = studioId;
         this.name = name;
         this.detail  = detail;
         this.phonenumber = phonenumber;

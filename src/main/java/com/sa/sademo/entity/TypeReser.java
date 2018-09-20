@@ -14,17 +14,15 @@ import java.util.*;
 public class TypeReser {
 
 @Id  
-@GeneratedValue   
-private Long type_id;
+private String typeId;
+
 private String  type_name;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name= "cancelReser_id") 
-private CancelReser cancelReser;
+
 private TypeReser() {}
 
-public TypeReser(Long type_id, String  type_name) { 
-        this.type_id = type_id;
+public TypeReser(String typeId, String  type_name) { 
+        this.typeId = typeId;
         this.type_name = type_name;
     }
 }

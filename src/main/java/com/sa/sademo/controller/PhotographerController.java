@@ -1,6 +1,6 @@
 package com.sa.sademo.controller;
-import com.sa.sademo.entity.Member;
-import com.sa.sademo.repository.MemberRepository;
+import com.sa.sademo.entity.Photographer;
+import com.sa.sademo.repository.PhotographerRepository;
 //time
 // import java.time.LocalDateTime;
 // import java.time.format.DateTimeFormatter;
@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
-class MemberController {
-    private  MemberRepository memberRepository;
+class PhotographerController {
+    private  PhotographerRepository photographerRepository;
 
-    public MemberController(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
+    public PhotographerController(PhotographerRepository photographerRepository) {
+        this.photographerRepository  = photographerRepository;
     }
 
-    @GetMapping("/member-list")
+    @GetMapping("/photographrer-list")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<Member> membersList() {
-        return memberRepository.findAll().stream()
+    public Collection<Photographer> photographerList() {
+        return photographerRepository.findAll().stream()
                 .collect(Collectors.toList());
     }
 }

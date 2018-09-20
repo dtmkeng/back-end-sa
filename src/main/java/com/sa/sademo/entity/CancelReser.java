@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import lombok.*;
 import java.util.*;
-// import java.time.LocalDate;
+import java.time.LocalDate;
 
 @Entity  
 @Data  
@@ -16,7 +16,6 @@ import java.util.*;
 public class CancelReser {
 
 @Id  
-@GeneratedValue 
 @NotNull
 private String cancelId;
 
@@ -25,25 +24,35 @@ private String  comment;
 @NotNull
 private String  title;
 @NotNull
-private Date  date_submit;
+private LocalDate  date_submit;
 
-@OneToOne(mappedBy = "cancelReser", cascade = CascadeType.ALL, 
-          fetch = FetchType.LAZY, 
-          optional = false)
+@OneToOne(fetch = FetchType.LAZY, optional = false,cascade =  CascadeType.ALL)
+@JoinColumn(name = "reserId", nullable = false)
 private Reservation reservation;
 
-@ManyToOne(fetch = FetchType.LAZY)
+@ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
+@JoinColumn(name="typeId")
+private TypeReser typeReser;
+
+@ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
+@JoinColumn(name="photograpId")
 private Photographer photographer;
 
-@ManyToOne(fetch= FetchType.LAZY)
+@ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
+@JoinColumn(name="studioId")
 private Studio  studio;
  
 private CancelReser() {}
 
-public CancelReser(String cancelId, String  comment, String  title) {     
+public CancelReser(String cancelId, String  comment, String  title, Reservation reservation,Photographer photographer, Studio  studio, TypeReser typeReser) {     
         this.cancelId = cancelId;
         this.comment = comment;
         this.title  = title;
-        // this.date_submit = LocalDate.now();
+        this.date_submit = LocalDate.now();
+
+        this.reservation = reservation;
+        this.photographer = photographer;
+        this.studio  = studio;
+        this.typeReser  = typeReser;
     }
 }

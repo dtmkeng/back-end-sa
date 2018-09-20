@@ -11,10 +11,7 @@ import lombok.*;
 import java.util.*;
 import java.util.Date;
 import java.time.LocalDate;
-// import java.time.LocalDateTime;
-// import java.time.format.DateTimeFormatter;
-// import java.text.SimpleDateFormat;
-// import java.text.ParseException;
+
 @Entity  
 @Data  
 @Table(name="Reservation") 
@@ -22,7 +19,13 @@ public class Reservation {
 
 @Id  
 @NonNull   
-private String reser_id;
+private String reserId;
+
+@NotNull
+private String photograp_id;
+
+@NotNull
+private String studio_id;
 
 @NotNull
 private LocalDate  time;
@@ -38,20 +41,23 @@ private String  status;
 @NotNull
 private Double price; 
 
+
+
 @OneToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "cancelReser_id",nullable = true)
 private CancelReser cancelReser;
 
 private Reservation() {}
 
-public Reservation(String reser_id, String  status, Double price, String detail,CancelReser cancelReser,String member_id) { 
-        this.reser_id = reser_id;
+public Reservation(String reserId, String  status, Double price, String detail,String member_id,String photograp_id,String studio_id) { 
+        this.reserId = reserId;
         this.status = status;
         this.price = price;
         this.time = LocalDate.now();
         this.detail = detail;
-        this.cancelReser = cancelReser;
+        // this.cancelReser = cancelReser;
         this.member_id = member_id;
+        this.studio_id = studio_id;
+        this.photograp_id = photograp_id;
 
         // this.time = LocalDate.now();
     }
