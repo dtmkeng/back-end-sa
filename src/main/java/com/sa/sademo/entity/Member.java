@@ -16,7 +16,7 @@ public class Member {
 
 @Id  
 @NotNull
-private String member_id;
+private String memberId;
 @NotNull
 private String  username;
 @NotNull
@@ -25,13 +25,16 @@ private String  name;
 private String  email;
 private String  phone_number;
 
+@NotNull
+private String password;
 // private LocalDate date;
 
 
 private Member() {}
-public Member(String member_id,String  username, String  name, String  email, String  phone_number){
-                this.member_id = member_id;
+public Member(String memberId,String  username,String password, String  name, String  email, String  phone_number){
+                this.memberId = memberId;
                 this.username = username;
+                this.password = password;
                 this.name = name;
                 this.email= email;
                 this.phone_number = phone_number;

@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 class StudioController {
@@ -24,5 +25,10 @@ class StudioController {
     public Collection<Studio> studioList() {
         return studioRepository.findAll().stream()
                 .collect(Collectors.toList());
+    }
+    @GetMapping("/studio-list/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Studio studioFind(@PathVariable("id") String id) {
+        return studioRepository.findByStudioId(id);
     }
 }

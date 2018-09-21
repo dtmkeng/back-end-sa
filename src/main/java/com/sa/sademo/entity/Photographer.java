@@ -26,7 +26,6 @@ private String  detail;
 private String  phonenumber;
 
 
-
 private Photographer() {}
 
 public Photographer(String photograpId, String  name, String  detail, String  phonenumber ) { 

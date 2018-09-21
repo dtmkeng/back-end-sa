@@ -26,19 +26,19 @@ private String  title;
 @NotNull
 private LocalDate  date_submit;
 
-@OneToOne(fetch = FetchType.LAZY, optional = false,cascade =  CascadeType.ALL)
+@OneToOne(fetch = FetchType.EAGER, optional = false,cascade =  CascadeType.ALL)
 @JoinColumn(name = "reserId", nullable = false)
 private Reservation reservation;
 
-@ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
+@ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
 @JoinColumn(name="typeId")
 private TypeReser typeReser;
 
-@ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
+@ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
 @JoinColumn(name="photograpId")
 private Photographer photographer;
 
-@ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
+@ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
 @JoinColumn(name="studioId")
 private Studio  studio;
  

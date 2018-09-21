@@ -54,11 +54,11 @@ public Reservation(String reserId, String  status, Double price, String detail,S
         this.price = price;
         this.time = LocalDate.now();
         this.detail = detail;
-        // this.cancelReser = cancelReser;
+       
         this.member_id = member_id;
         this.studio_id = studio_id;
         this.photograp_id = photograp_id;
 
-        // this.time = LocalDate.now();
+     
     }
 }

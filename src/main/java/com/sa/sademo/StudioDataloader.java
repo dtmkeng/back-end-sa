@@ -33,10 +33,10 @@ public class StudioDataloader implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
         
 
-        this.memberRepository.save(new Member("M0001","mem1","john0","test0@test.com","081-13549"));
-        this.memberRepository.save(new Member("M0002","mem2","john1","test1@test.com","071-13549"));
-        this.memberRepository.save(new Member("M0003","mem3","john2","test2@test.com","061-13549"));
-        this.memberRepository.save(new Member("M0004","mem4","john3","test3@test.com","091-13549"));
+        this.memberRepository.save(new Member("M0001","mem1","1234","john0","test0@test.com","081-13549"));
+        this.memberRepository.save(new Member("M0002","mem2","1234","john1","test1@test.com","071-13549"));
+        this.memberRepository.save(new Member("M0003","mem3","1234","john2","test2@test.com","061-13549"));
+        this.memberRepository.save(new Member("M0004","mem4","1234","john3","test3@test.com","091-13549"));
         
         this.typeReserRepository.save(new TypeReser("T01","Photographer"));
         this.typeReserRepository.save(new TypeReser("T10","Studio"));
