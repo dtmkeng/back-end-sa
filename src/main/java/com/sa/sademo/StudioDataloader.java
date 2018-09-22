@@ -46,27 +46,30 @@ public class StudioDataloader implements ApplicationRunner {
         this.studioRepository.save(new Studio("ST0001","THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865"));
 
         
-        Reservation reser1 = new Reservation("R001","R",1226.00,"จองช่างภาพ","M0001","PH001","ST0001");
-         this.reservationRepository.save(reser1);
+        // Reservation reser1 = new Reservation("R001","R",1226.00,"จองช่างภาพ","M0001","PH001","ST0001");
 
-         //test controller
-         Photographer ph1 = this.photographerRepository.findByPhotograpId("PH001");
-         Studio std1 = this.studioRepository.findByStudioId("ST0001");
-         Reservation re1 = this.reservationRepository.findByReserId("R001");
-         String typeId;
+         this.reservationRepository.save(new Reservation("R001","R",1226.00,"จองช่างภาพ","M0001","PH001","ST0001"));
+         this.reservationRepository.save(new Reservation("R002","R",1000.00,"จองช่างภาพเเละสตูดิโอถ่ายภาพ","M0002","PH001","ST0001"));
+         this.reservationRepository.save(new Reservation("R003","R",1234.00,"จองช่างภาพ เต็มวัน","M0003","PH001","ST0001"));
 
-         if(ph1 != null && std1 == null)
-                typeId = "T01";
-         else if (ph1 == null && std1 != null)
-                typeId = "T10";
-         else   
-                typeId = "T11";
-        TypeReser typefind = this.typeReserRepository.findByTypeId(typeId);
-                //save cancel data
-                // System.out.println(re1);
-                CancelReser cancel1 = new CancelReser("C001","I your farther","งานบวชจ้า",re1,ph1,std1,typefind);
-                this.cancelReserRepository.save(cancel1);
-                 System.out.println(cancel1);
+        //  //test controller
+        //  Photographer ph1 = this.photographerRepository.findByPhotograpId("PH001");
+        //  Studio std1 = this.studioRepository.findByStudioId("ST0001");
+        //  Reservation re1 = this.reservationRepository.findByReserId("R001");
+        //  String typeId;
+
+        //  if(ph1 != null && std1 == null)
+        //         typeId = "T01";
+        //  else if (ph1 == null && std1 != null)
+        //         typeId = "T10";
+        //  else   
+        //         typeId = "T11";
+        // TypeReser typefind = this.typeReserRepository.findByTypeId(typeId);
+        //         //save cancel data
+        //         // System.out.println(re1);
+        //         CancelReser cancel1 = new CancelReser("C001","I your farther","งานบวชจ้า",re1,ph1,std1,typefind);
+        //         this.cancelReserRepository.save(cancel1);
+        //          System.out.println(cancel1);
         
 	}
 

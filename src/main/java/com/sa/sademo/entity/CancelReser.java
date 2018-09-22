@@ -47,7 +47,7 @@ private CancelReser() {}
 public CancelReser(String cancelId, String  comment, String  title, Reservation reservation,Photographer photographer, Studio  studio, TypeReser typeReser) {     
         this.cancelId = cancelId;
         this.comment = comment;
-        this.title  = title;
+        this.title  = title; 
         this.date_submit = LocalDate.now();
 
         this.reservation = reservation;

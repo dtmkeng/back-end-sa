@@ -34,7 +34,7 @@ private LocalDate  time;
 private String detail;
 
 @NotNull 
-private String member_id;
+private String memberId;
 
 @NotNull
 private String  status;
@@ -48,14 +48,14 @@ private CancelReser cancelReser;
 
 private Reservation() {}
 
-public Reservation(String reserId, String  status, Double price, String detail,String member_id,String photograp_id,String studio_id) { 
+public Reservation(String reserId, String  status, Double price, String detail,String memberId,String photograp_id,String studio_id) { 
         this.reserId = reserId;
         this.status = status;
         this.price = price;
         this.time = LocalDate.now();
         this.detail = detail;
        
-        this.member_id = member_id;
+        this.memberId = memberId;
         this.studio_id = studio_id;
         this.photograp_id = photograp_id;
 
