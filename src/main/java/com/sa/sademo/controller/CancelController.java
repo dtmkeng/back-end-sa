@@ -39,16 +39,15 @@ class CancelController {
     public  Reservation checkMap(@PathVariable("reserid") String reserid,@PathVariable("memid") String memid){
         return reservationRepository.findByReserIdAndMemberId(reserid,memid);
     }
-    @PostMapping("/cancel-insert/{id}")
+    @PostMapping("/cancel-insert/{id}/comment/{commemt}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public String  CancelRecerSubmit(@PathVariable("id") String id){
+    public CancelReser  CancelRecerSubmit(@PathVariable("id") String id,@PathVariable("commemt") String commemt){
             Reservation re1 =  this.reservationRepository.findByReserId(id); 
 
             Photographer ph1 = this.photographerRepository.findByPhotograpId(re1.getPhotograp_id());
             Studio std1 = this.studioRepository.findByStudioId(re1.getStudio_id());
 
          String typeId;
-
          if(ph1 != null && std1 == null)
                 typeId = "T01";
          else if (ph1 == null && std1 != null)
@@ -56,9 +55,9 @@ class CancelController {
          else   
                 typeId = "T11";
         TypeReser typefind = this.typeReserRepository.findByTypeId(typeId);
-                CancelReser cancel1 = new CancelReser("C001","I your farther","งานบวชจ้า",re1,ph1,std1,typefind);
+                CancelReser cancel1 = new CancelReser("C001",commemt,"งานบวชจ้า",re1,ph1,std1,typefind);
                 this.cancelReserRepository.save(cancel1);
-        return "Save Cancel";
+        return this.cancelReserRepository.save(cancel1);
     }
 
    
