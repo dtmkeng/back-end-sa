@@ -48,7 +48,7 @@ class CancelController {
             Studio std1 = this.studioRepository.findByStudioId(re1.getStudio_id());
 
          String typeId;
-         if(ph1 != null && std1 == null)
+         if(ph1 != null && std1 == null)  
                 typeId = "T01";
          else if (ph1 == null && std1 != null)
                 typeId = "T10";
