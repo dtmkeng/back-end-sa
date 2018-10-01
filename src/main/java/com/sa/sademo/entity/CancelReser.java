@@ -24,7 +24,7 @@ private String  comment;
 @NotNull
 private String  title;
 @NotNull
-private LocalDate  date_submit;
+private LocalDate  date;
 
 @OneToOne(fetch = FetchType.EAGER, optional = false,cascade =  CascadeType.ALL)
 @JoinColumn(name = "reserId", nullable = false)
@@ -48,7 +48,7 @@ public CancelReser(String cancelId, String  comment, String  title, Reservation 
         this.cancelId = cancelId;
         this.comment = comment;
         this.title  = title; 
-        this.date_submit = LocalDate.now();
+        this.date = LocalDate.now();
 
         this.reservation = reservation;
         this.photographer = photographer;
