@@ -22,10 +22,10 @@ public class Reservation {
 private String reserId;
 
 @NotNull
-private String photograp_id;
+private String photographerId;
 
 @NotNull
-private String studio_id;
+private String studioId;
 
 @NotNull
 private LocalDate  time;
@@ -48,7 +48,7 @@ private CancelReser cancelReser;
 
 private Reservation() {}
 
-public Reservation(String reserId, String  status, Double price, String detail,String memberId,String photograp_id,String studio_id) { 
+public Reservation(String reserId, String  status, Double price, String detail,String memberId,String photographerId,String studioId) { 
         this.reserId = reserId;
         this.status = status;
         this.price = price;
@@ -56,8 +56,8 @@ public Reservation(String reserId, String  status, Double price, String detail,S
         this.detail = detail;
        
         this.memberId = memberId;
-        this.studio_id = studio_id;
-        this.photograp_id = photograp_id;
+        this.studioId = studioId;
+        this.photographerId = photographerId;
 
      
     }

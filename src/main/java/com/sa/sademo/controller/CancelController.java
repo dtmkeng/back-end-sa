@@ -59,6 +59,4 @@ class CancelController {
                 this.cancelReserRepository.save(cancel1);
         return this.cancelReserRepository.save(cancel1);
     }
-
-   
 }
