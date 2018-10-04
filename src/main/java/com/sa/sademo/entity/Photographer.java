@@ -1,4 +1,4 @@
-package com.sa.sademo.entity;
+package sut.sa.g16.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -24,10 +24,7 @@ private String  name;
 private String  detail;
 @NotNull
 private String  phonenumber;
-
-
 private Photographer() {}
-
 public Photographer(String photograpId, String  name, String  detail, String  phonenumber ) { 
         this.photograpId = photograpId;
         this.name  = name;

@@ -1,4 +1,4 @@
-package com.sa.sademo.entity;
+package sut.sa.g16.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -12,8 +12,8 @@ import java.time.LocalDate;
 
 @Entity  
 @Data  
-@Table(name="CancelReser") 
-public class CancelReser {
+@Table(name="CancelReservation") 
+public class CancelReservation {
 
 @Id  
 @NotNull
@@ -31,8 +31,8 @@ private LocalDate  date;
 private Reservation reservation;
 
 @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
-@JoinColumn(name="typeId")
-private TypeReser typeReser;
+@JoinColumn(name="typereservationId")
+private TypeReservation typeReservation;
 
 @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
 @JoinColumn(name="photograpId")
@@ -42,9 +42,9 @@ private Photographer photographer;
 @JoinColumn(name="studioId")
 private Studio  studio;
  
-private CancelReser() {}
+private CancelReservation() {}
 
-public CancelReser(String cancelId, String  comment, String  title, Reservation reservation,Photographer photographer, Studio  studio, TypeReser typeReser) {     
+public CancelReservation(String cancelId, String  comment, String  title, Reservation reservation,Photographer photographer, Studio  studio, TypeReservation typeReservation) {     
         this.cancelId = cancelId;
         this.comment = comment;
         this.title  = title; 
@@ -53,6 +53,6 @@ public CancelReser(String cancelId, String  comment, String  title, Reservation 
         this.reservation = reservation;
         this.photographer = photographer;
         this.studio  = studio;
-        this.typeReser  = typeReser;
+        this.typeReservation  = typeReservation;
     }
 }

@@ -1,6 +1,6 @@
-package com.sa.sademo.controller;
-import com.sa.sademo.entity.Studio;
-import com.sa.sademo.repository.StudioRepository;
+package sut.sa.g16.controller;
+import sut.sa.g16.entity.Studio;
+import sut.sa.g16.repository.StudioRepository;
 //time
 
 

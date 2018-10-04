@@ -1,6 +1,6 @@
-package com.sa.sademo.controller;
-import com.sa.sademo.entity.Reservation;
-import com.sa.sademo.repository.ReservationRepository;
+package sut.sa.g16.controller;
+import sut.sa.g16.entity.Reservation;
+import sut.sa.g16.repository.ReservationRepository;
 //time
 
 

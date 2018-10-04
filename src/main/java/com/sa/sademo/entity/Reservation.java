@@ -1,4 +1,4 @@
-package com.sa.sademo.entity;
+package sut.sa.g16.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -44,7 +44,7 @@ private Double price;
 
 
 @OneToOne(fetch = FetchType.LAZY)
-private CancelReser cancelReser;
+private CancelReservation cancelReservation;
 
 private Reservation() {}
 
