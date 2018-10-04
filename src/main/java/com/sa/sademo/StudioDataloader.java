@@ -1,6 +1,6 @@
-package com.sa.sademo;
-import com.sa.sademo.repository.*;
-import com.sa.sademo.entity.*;
+package sut.sa.g16;
+import sut.sa.g16.repository.*;
+import sut.sa.g16.entity.*;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,17 @@ import org.springframework.context.annotation.Bean;
 public class StudioDataloader implements ApplicationRunner {
     private final MemberRepository memberRepository;
     private final ReservationRepository reservationRepository;
-    private final CancelReserRepository cancelReserRepository;
     private final PhotographerRepository photographerRepository;
     private final StudioRepository studioRepository;
-    private final TypeReserRepository typeReserRepository;
+    private final TypeReservationRepository typeReservationRepository;
 
     @Autowired
-    public StudioDataloader(TypeReserRepository typeReserRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MemberRepository memberRepository,ReservationRepository reservationRepository,CancelReserRepository cancelReserRepository ) {
+    public StudioDataloader(TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MemberRepository memberRepository,ReservationRepository reservationRepository) {
         this.memberRepository = memberRepository;
         this.reservationRepository = reservationRepository;
-        this.cancelReserRepository = cancelReserRepository;
         this.photographerRepository = photographerRepository;
         this.studioRepository = studioRepository;
-        this.typeReserRepository = typeReserRepository;
+        this.typeReservationRepository = typeReservationRepository;
     }
     
 	@Override
@@ -38,9 +36,9 @@ public class StudioDataloader implements ApplicationRunner {
         this.memberRepository.save(new Member("M0003","mem3","1234","john2","test2@test.com","061-13549"));
         this.memberRepository.save(new Member("M0004","mem4","1234","john3","test3@test.com","091-13549"));
         
-        this.typeReserRepository.save(new TypeReser("T01","Photographer"));
-        this.typeReserRepository.save(new TypeReser("T10","Studio"));
-        this.typeReserRepository.save(new TypeReser("T11","Photographer&Studio"));
+        this.typeReservationRepository.save(new TypeReservation("T01","Photographer"));
+        this.typeReservationRepository.save(new TypeReservation("T10","Studio"));
+        this.typeReservationRepository.save(new TypeReservation("T11","Photographer&Studio"));
 
         this.photographerRepository.save(new Photographer("PH001","โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354"));
         this.studioRepository.save(new Studio("ST0001","THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865"));

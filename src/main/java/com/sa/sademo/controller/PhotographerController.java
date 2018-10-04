@@ -1,6 +1,6 @@
-package com.sa.sademo.controller;
-import com.sa.sademo.entity.Photographer;
-import com.sa.sademo.repository.PhotographerRepository;
+package sut.sa.g16.controller;
+import sut.sa.g16.entity.Photographer;
+import sut.sa.g16.repository.PhotographerRepository;
 //time
 // import java.time.LocalDateTime;
 // import java.time.format.DateTimeFormatter;
@@ -27,9 +27,11 @@ class PhotographerController {
         return photographerRepository.findAll().stream()
                 .collect(Collectors.toList());
     }
+
     @GetMapping("/photographrer-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Photographer findPhotographer(@PathVariable("id") String id) {
         return photographerRepository.findByPhotograpId(id);
     }
+
 }

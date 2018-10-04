@@ -1,6 +1,6 @@
-package com.sa.sademo.controller;
-import com.sa.sademo.entity.Member;
-import com.sa.sademo.repository.MemberRepository;
+package sut.sa.g16.controller;
+import sut.sa.g16.entity.Member;
+import sut.sa.g16.repository.MemberRepository;
 //time
 // import java.time.LocalDateTime;
 // import java.time.format.DateTimeFormatter;

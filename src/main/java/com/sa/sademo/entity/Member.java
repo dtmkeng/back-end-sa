@@ -1,4 +1,4 @@
-package com.sa.sademo.entity;
+package sut.sa.g16.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -11,7 +11,7 @@ import java.util.*;
 import java.time.LocalDate;
 @Entity  
 @Data  
-@Table(name="Member") 
+@Table(name="Members") 
 public class Member {
 
 @Id  
