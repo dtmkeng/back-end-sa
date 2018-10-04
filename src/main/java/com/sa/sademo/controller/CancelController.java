@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.*;
 import org.springframework.web.bind.annotation.*;
-
+import java.lang.NullPointerException;
 @RestController
 class CancelController {
 
@@ -47,32 +47,49 @@ class CancelController {
     @PostMapping("/cancel-insert/{id}/comment/{commemt}")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Map<String, Object>>    CancelRecerSubmit(@PathVariable("id") String id,@PathVariable("commemt") String commemt){
-            Reservation re1 =  this.reservationRepository.findByReserId(id); 
+          try{
+                Reservation re1 =  this.reservationRepository.findByReserId(id); 
 
-            Photographer ph1 = this.photographerRepository.findByPhotograpId(re1.getPhotographerId());
-            Studio std1 = this.studioRepository.findByStudioId(re1.getStudioId());
+                Photographer ph1 = this.photographerRepository.findByPhotograpId(re1.getPhotographerId());
+                Studio std1 = this.studioRepository.findByStudioId(re1.getStudioId());
 
-         String typeId;
-         if(ph1 != null && std1 == null)
-                typeId = "T01";
-         else if (ph1 == null && std1 != null)
-                typeId = "T10";
-         else   
-                typeId = "T11";
-        TypeReservation typefind = this.typeReservationRepository.findByTypereservationId(typeId);
+                String typeId;
+                if(ph1 != null && std1 == null)
+                    typeId = "T01";
+                else if (ph1 == null && std1 != null)
+                    typeId = "T10";
+                else   
+                    typeId = "T11";
+      
+                TypeReservation typefind = this.typeReservationRepository.findByTypereservationId(typeId);
                 CancelReservation  cancel1 = new CancelReservation("C001",commemt,"งานบวชจ้า",re1,ph1,std1,typefind);
                 this.cancelReservationRepository.save(cancel1);
 
-        // return this.cancelReserRepository.save(cancel1);
-         Map<String, Object> json = new HashMap<String, Object>();
-         json.put("success", true);
-         json.put("status", "save");
+                Map<String, Object> json = new HashMap<String, Object>();
+                json.put("success", true);
+                json.put("status", "save");
 
-         HttpHeaders headers = new HttpHeaders();
-         headers.add("Content-Type", "application/json; charset=UTF-8");
-         headers.add("X-Fsl-Location", "/");
-         headers.add("X-Fsl-Response-Code", "302");
-        return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Content-Type", "application/json; charset=UTF-8");
+                headers.add("X-Fsl-Location", "/");
+                headers.add("X-Fsl-Response-Code", "302");
+                return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+
+        } catch(NullPointerException e){
+                Map<String, Object> json = new HashMap<String, Object>();
+                System.out.println("Error Save CancelReservation");
+                 json.put("success", false);
+                 json.put("status", "save-false");
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Content-Type", "application/json; charset=UTF-8");
+                headers.add("X-Fsl-Location", "/");
+                headers.add("X-Fsl-Response-Code", "500");
+                return  (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.INTERNAL_SERVER_ERROR));
+        }
+
+        // return this.cancelReserRepository.save(cancel1);
+        
     }
 
 }
