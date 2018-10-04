@@ -53,6 +53,7 @@ class CancelController {
                 Photographer ph1 = this.photographerRepository.findByPhotograpId(re1.getPhotographerId());
                 Studio std1 = this.studioRepository.findByStudioId(re1.getStudioId());
 
+
                 String typeId;
                 if(ph1 != null && std1 == null)
                     typeId = "T01";
@@ -62,6 +63,7 @@ class CancelController {
                     typeId = "T11";
       
                 TypeReservation typefind = this.typeReservationRepository.findByTypereservationId(typeId);
+
                 CancelReservation  cancel1 = new CancelReservation("C001",commemt,"งานบวชจ้า",re1,ph1,std1,typefind);
                 this.cancelReservationRepository.save(cancel1);
 
