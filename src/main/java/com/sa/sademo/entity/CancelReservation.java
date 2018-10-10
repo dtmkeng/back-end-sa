@@ -17,12 +17,12 @@ public class CancelReservation {
 
 @Id  
 @NotNull
-private String cancelId;
+@SequenceGenerator(name="cancelreservation_seq",sequenceName="cancelreservation_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="cancelreservation_seq")  
+private Long cancelId;
 
 @NotNull
 private String  comment;
-@NotNull
-private String  title;
 @NotNull
 private LocalDate  date;
 
@@ -44,12 +44,9 @@ private Studio  studio;
  
 private CancelReservation() {}
 
-public CancelReservation(String cancelId, String  comment, String  title, Reservation reservation,Photographer photographer, Studio  studio, TypeReservation typeReservation) {     
-        this.cancelId = cancelId;
+public CancelReservation( String  comment,Reservation reservation,Photographer photographer, Studio  studio, TypeReservation typeReservation) {     
         this.comment = comment;
-        this.title  = title; 
         this.date = LocalDate.now();
-
         this.reservation = reservation;
         this.photographer = photographer;
         this.studio  = studio;

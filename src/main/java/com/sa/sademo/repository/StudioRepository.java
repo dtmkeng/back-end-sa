@@ -5,6 +5,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
-public interface StudioRepository extends JpaRepository<Studio, String> {
-    Studio findByStudioId(String studioId);
+public interface StudioRepository extends JpaRepository<Studio, Long> {
+    Studio findByStudioId(Long studioId);
 }

@@ -28,7 +28,7 @@ class RescervationController {
     }
     @GetMapping("/reservation-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Reservation reservationFinnd(@PathVariable("id") String id) {
+    public Reservation reservationFinnd(@PathVariable("id") Long id) {
         return reservationRepository.findByReserId(id);
     }
 }

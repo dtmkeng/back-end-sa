@@ -16,14 +16,16 @@ public class Member {
 
 @Id  
 @NotNull
-private String memberId;
+@SequenceGenerator(name="member_seq",sequenceName="member_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="member_seq")  
+private Long memberId;
 @NotNull
 private String  username;
 @NotNull
 private String  name;
 @NotNull
 private String  email;
-private String  phone_number;
+private String  phonenumber;
 
 @NotNull
 private String password;
@@ -31,12 +33,11 @@ private String password;
 
 
 private Member() {}
-public Member(String memberId,String  username,String password, String  name, String  email, String  phone_number){
-                this.memberId = memberId;
+public Member( String username,String password, String  name, String  email, String  phonenumber){
                 this.username = username;
                 this.password = password;
                 this.name = name;
                 this.email= email;
-                this.phone_number = phone_number;
+                this.phonenumber = phonenumber;
  }
 }

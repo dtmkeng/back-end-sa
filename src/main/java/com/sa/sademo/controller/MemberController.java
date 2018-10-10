@@ -1,5 +1,6 @@
 package sut.sa.g16.controller;
 import sut.sa.g16.entity.Member;
+import sut.sa.g16.model.User;
 import sut.sa.g16.repository.MemberRepository;
 //time
 // import java.time.LocalDateTime;
@@ -23,17 +24,24 @@ class MemberController {
     public MemberController(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
-
+     //test req body
+    @PostMapping("/userbody")
+    public User bodyUser(@RequestBody User user){
+          
+            return user;
+    }
+    
     @GetMapping("/member-list")
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<Member> membersList() {
         return memberRepository.findAll().stream()
                 .collect(Collectors.toList());
     }
-
+    
     @GetMapping("/member-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Member memberFind(@PathVariable("id") String id) {
+    public Member memberFind(@PathVariable("id") Long id) {
+
         return memberRepository.findByMemberId(id);
     }
     @PostMapping("/member-list/{username}/pass/{pass}")

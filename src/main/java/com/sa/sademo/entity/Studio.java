@@ -16,8 +16,10 @@ import java.util.*;
 public class Studio {
 
 @Id  
-@NotNull   
-private String studioId;
+@NotNull
+@SequenceGenerator(name="studioId_seq",sequenceName="studioId_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="studioId_seq")    
+private Long studioId;
 @NotNull
 private String  name;
 @NotNull
@@ -27,8 +29,7 @@ private String  phonenumber;
 
 private Studio() {}
 
-public Studio(String studioId, String  name,  String  detail, String  phonenumber) { 
-        this.studioId = studioId;
+public Studio(String  name,  String  detail, String  phonenumber) { 
         this.name = name;
         this.detail  = detail;
         this.phonenumber = phonenumber;

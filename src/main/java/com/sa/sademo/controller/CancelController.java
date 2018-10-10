@@ -4,7 +4,7 @@ import  sut.sa.g16.repository.CancelReservationRepository;
 import  sut.sa.g16.repository.*;
 import  sut.sa.g16.entity.*;
 //time
-
+import java.security.Principal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,30 +23,32 @@ class CancelController {
     private  PhotographerRepository photographerRepository;
     private  StudioRepository studioRepository;
     private  TypeReservationRepository typeReservationRepository;
+    private  MemberRepository memberRepository;
 
-    public CancelController(TypeReservationRepository typeReservationRepository, CancelReservationRepository cancelReservationRepository,ReservationRepository reservationRepository,PhotographerRepository photographerRepository,StudioRepository studioRepository) {
+    public CancelController(MemberRepository memberRepository,TypeReservationRepository typeReservationRepository, CancelReservationRepository cancelReservationRepository,ReservationRepository reservationRepository,PhotographerRepository photographerRepository,StudioRepository studioRepository) {
         this.cancelReservationRepository  = cancelReservationRepository;
         this.reservationRepository = reservationRepository;
         this.photographerRepository =  photographerRepository;
         this.studioRepository = studioRepository;
         this.typeReservationRepository = typeReservationRepository;
+        this.memberRepository = memberRepository;
     }
-
     @GetMapping("/cancel-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public CancelReservation cancelList(@PathVariable("id") String id) {
+    public CancelReservation cancelList(@PathVariable("id") Long id) {
         return cancelReservationRepository.findByCancelId(id);
     }
 
-    @PostMapping("/mapdata/{reserid}/{memid}")
+    @PostMapping("/mapdata/{reserid}/{name}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public  Reservation checkMap(@PathVariable("reserid") String reserid,@PathVariable("memid") String memid){
-        return reservationRepository.findByReserIdAndMemberId(reserid,memid);
+    public  Reservation checkMap(@PathVariable("reserid") long reserid,@PathVariable("name") String name){
+        Member memberid = this.memberRepository.findByName(name);
+        return reservationRepository.findByReserIdAndMemberId(reserid,memberid.getMemberId());
     }
 
     @PostMapping("/cancel-insert/{id}/comment/{commemt}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<Map<String, Object>>    CancelRecerSubmit(@PathVariable("id") String id,@PathVariable("commemt") String commemt){
+    public ResponseEntity<Map<String, Object>>    CancelRecerSubmit(@PathVariable("id") Long id,@PathVariable("commemt") String commemt){
           try{
                 Reservation re1 =  this.reservationRepository.findByReserId(id); 
 
@@ -64,7 +66,7 @@ class CancelController {
       
                 TypeReservation typefind = this.typeReservationRepository.findByTypereservationId(typeId);
 
-                CancelReservation  cancel1 = new CancelReservation("C001",commemt,"งานบวชจ้า",re1,ph1,std1,typefind);
+                CancelReservation  cancel1 = new CancelReservation(commemt,re1,ph1,std1,typefind); //hardcode 
                 this.cancelReservationRepository.save(cancel1);
 
                 Map<String, Object> json = new HashMap<String, Object>();

@@ -31,24 +31,24 @@ public class StudioDataloader implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
         
 
-        this.memberRepository.save(new Member("M0001","mem1","1234","john0","test0@test.com","081-13549"));
-        this.memberRepository.save(new Member("M0002","mem2","1234","john1","test1@test.com","071-13549"));
-        this.memberRepository.save(new Member("M0003","mem3","1234","john2","test2@test.com","061-13549"));
-        this.memberRepository.save(new Member("M0004","mem4","1234","john3","test3@test.com","091-13549"));
+        this.memberRepository.save(new Member("mem1","1234","john0","test0@test.com","081-13549"));
+        this.memberRepository.save(new Member("mem2","1234","john1","test1@test.com","071-13549"));
+        this.memberRepository.save(new Member("mem3","1234","john2","test2@test.com","061-13549"));
+        this.memberRepository.save(new Member("mem4","1234","john3","test3@test.com","091-13549"));
         
         this.typeReservationRepository.save(new TypeReservation("T01","Photographer"));
         this.typeReservationRepository.save(new TypeReservation("T10","Studio"));
         this.typeReservationRepository.save(new TypeReservation("T11","Photographer&Studio"));
 
-        this.photographerRepository.save(new Photographer("PH001","โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354"));
-        this.studioRepository.save(new Studio("ST0001","THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865"));
+        this.photographerRepository.save(new Photographer("โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354")); // fix
+        this.studioRepository.save(new Studio("THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865"));
 
         
         // Reservation reser1 = new Reservation("R001","R",1226.00,"จองช่างภาพ","M0001","PH001","ST0001");
 
-         this.reservationRepository.save(new Reservation("R001","R",1226.00,"จองช่างภาพ","M0001","PH001","ST0001"));
-         this.reservationRepository.save(new Reservation("R002","R",1000.00,"จองช่างภาพเเละสตูดิโอถ่ายภาพ","M0002","PH001","ST0001"));
-         this.reservationRepository.save(new Reservation("R003","R",1234.00,"จองช่างภาพ เต็มวัน","M0003","PH001","ST0001"));
+         this.reservationRepository.save(new Reservation("R",1226.00,"จองช่างภาพ",1L,1L,1L));
+         this.reservationRepository.save(new Reservation("R",1000.00,"จองช่างภาพเเละสตูดิโอถ่ายภาพ",1L,1L,1L));
+         this.reservationRepository.save(new Reservation("R",1234.00,"จองช่างภาพ เต็มวัน",1L,1L,1L));
 
         //  //test controller
         //  Photographer ph1 = this.photographerRepository.findByPhotograpId("PH001");

@@ -28,7 +28,7 @@ class StudioController {
     }
     @GetMapping("/studio-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Studio studioFind(@PathVariable("id") String id) {
+    public Studio studioFind(@PathVariable("id") Long id) {
         return studioRepository.findByStudioId(id);
     }
 }

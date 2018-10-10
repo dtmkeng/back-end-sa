@@ -30,8 +30,7 @@ class PhotographerController {
 
     @GetMapping("/photographrer-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Photographer findPhotographer(@PathVariable("id") String id) {
+    public Photographer findPhotographer(@PathVariable("id") Long id) {
         return photographerRepository.findByPhotograpId(id);
     }
-
 }

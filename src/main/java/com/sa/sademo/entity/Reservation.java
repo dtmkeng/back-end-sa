@@ -17,24 +17,27 @@ import java.time.LocalDate;
 @Table(name="Reservation") 
 public class Reservation {
 
+
 @Id  
-@NonNull   
-private String reserId;
+@NotNull
+@SequenceGenerator(name="reserId_seq",sequenceName="reserId_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="reserId_seq")     
+private Long reserId;
 
 @NotNull
-private String photographerId;
+private Long photographerId;
 
 @NotNull
-private String studioId;
+private Long studioId;
 
 @NotNull
-private LocalDate  time;
+private Date  dateCancel;
 
 @NotNull
 private String detail;
 
 @NotNull 
-private String memberId;
+private Long memberId;
 
 @NotNull
 private String  status;
@@ -48,11 +51,11 @@ private CancelReservation cancelReservation;
 
 private Reservation() {}
 
-public Reservation(String reserId, String  status, Double price, String detail,String memberId,String photographerId,String studioId) { 
+public Reservation(String  status, Double price, String detail,Long memberId,Long photographerId,Long studioId) { 
         this.reserId = reserId;
         this.status = status;
         this.price = price;
-        this.time = LocalDate.now();
+        this.dateCancel = new Date();
         this.detail = detail;
        
         this.memberId = memberId;
