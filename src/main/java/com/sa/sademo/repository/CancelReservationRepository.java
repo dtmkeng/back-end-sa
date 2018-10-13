@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface CancelReservationRepository extends JpaRepository<CancelReservation, Long> {
-   CancelReservation findByCancelId(Long cancelId);
+   CancelReservation findByCancelReservationId(Long cancelReservationId);
    
 }

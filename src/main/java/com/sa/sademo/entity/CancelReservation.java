@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import lombok.*;
 import java.util.*;
-import java.time.LocalDate;
+// import java.time.LocalDate;
 
 @Entity  
 @Data  
@@ -19,12 +19,12 @@ public class CancelReservation {
 @NotNull
 @SequenceGenerator(name="cancelreservation_seq",sequenceName="cancelreservation_seq")               
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="cancelreservation_seq")  
-private Long cancelId;
+private Long cancelReservationId;
 
 @NotNull
 private String  comment;
 @NotNull
-private LocalDate  date;
+private Date  date;
 
 @OneToOne(fetch = FetchType.EAGER, optional = false,cascade =  CascadeType.ALL)
 @JoinColumn(name = "reserId", nullable = false)
@@ -44,9 +44,9 @@ private Studio  studio;
  
 private CancelReservation() {}
 
-public CancelReservation( String  comment,Reservation reservation,Photographer photographer, Studio  studio, TypeReservation typeReservation) {     
+public CancelReservation( String  comment,Reservation reservation,Photographer photographer, Studio  studio, TypeReservation typeReservation,Date  date) {     
         this.comment = comment;
-        this.date = LocalDate.now();
+        this.date = date;
         this.reservation = reservation;
         this.photographer = photographer;
         this.studio  = studio;

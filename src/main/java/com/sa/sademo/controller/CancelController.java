@@ -36,7 +36,7 @@ class CancelController {
     @GetMapping("/cancel-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public CancelReservation cancelList(@PathVariable("id") Long id) {
-        return cancelReservationRepository.findByCancelId(id);
+        return cancelReservationRepository.findByCancelReservationId(id);
     }
 
     @PostMapping("/mapdata/{reserid}/{name}")
@@ -66,7 +66,7 @@ class CancelController {
       
                 TypeReservation typefind = this.typeReservationRepository.findByTypereservationId(typeId);
 
-                CancelReservation  cancel1 = new CancelReservation(commemt,re1,ph1,std1,typefind); //hardcode 
+                CancelReservation  cancel1 = new CancelReservation(commemt,re1,ph1,std1,typefind,new Date()); //hardcode 
                 this.cancelReservationRepository.save(cancel1);
 
                 Map<String, Object> json = new HashMap<String, Object>();

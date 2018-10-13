@@ -31,7 +31,7 @@ private Long photographerId;
 private Long studioId;
 
 @NotNull
-private Date  dateCancel;
+private String  time;
 
 @NotNull
 private String detail;
@@ -51,17 +51,14 @@ private CancelReservation cancelReservation;
 
 private Reservation() {}
 
-public Reservation(String  status, Double price, String detail,Long memberId,Long photographerId,Long studioId) { 
+public Reservation(String  status, Double price, String detail,Long memberId,Long photographerId,Long studioId ,String time) { 
         this.reserId = reserId;
         this.status = status;
         this.price = price;
-        this.dateCancel = new Date();
+        this.time = time;
         this.detail = detail;
-       
         this.memberId = memberId;
         this.studioId = studioId;
         this.photographerId = photographerId;
-
-     
     }
 }
