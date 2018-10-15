@@ -33,11 +33,16 @@ private Long studioId;
 @NotNull
 private String  time;
 
+
+@NotNull
+private Date  date;
+
 @NotNull
 private String detail;
 
-@NotNull 
-private Long memberId;
+@NotNull
+@ManyToOne 
+private Member memberId;
 
 @NotNull
 private String  status;
@@ -51,7 +56,7 @@ private CancelReservation cancelReservation;
 
 private Reservation() {}
 
-public Reservation(String  status, Double price, String detail,Long memberId,Long photographerId,Long studioId ,String time) { 
+public Reservation(String  status, Double price, String detail,Member memberId,Long photographerId,Long studioId ,String time,Date  date) { 
         this.reserId = reserId;
         this.status = status;
         this.price = price;
@@ -60,5 +65,6 @@ public Reservation(String  status, Double price, String detail,Long memberId,Lon
         this.memberId = memberId;
         this.studioId = studioId;
         this.photographerId = photographerId;
+        this.date = date;
     }
 }

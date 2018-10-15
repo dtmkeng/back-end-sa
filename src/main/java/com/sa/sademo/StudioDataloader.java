@@ -31,10 +31,10 @@ public class StudioDataloader implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
         
 
-        this.memberRepository.save(new Member("mem1","1234","john0","test0@test.com","081-13549"));
-        this.memberRepository.save(new Member("mem2","1234","john1","test1@test.com","071-13549"));
-        this.memberRepository.save(new Member("mem3","1234","john2","test2@test.com","061-13549"));
-        this.memberRepository.save(new Member("mem4","1234","john3","test3@test.com","091-13549"));
+       Member m1 = this.memberRepository.save(new Member("mem1","1234","john0","test0@test.com","081-13549"));
+       Member m2 =  this.memberRepository.save(new Member("mem2","1234","john1","test1@test.com","071-13549"));
+       Member m3 = this.memberRepository.save(new Member("mem3","1234","john2","test2@test.com","061-13549"));
+       Member m4 = this.memberRepository.save(new Member("mem4","1234","john3","test3@test.com","091-13549"));
         
         this.typeReservationRepository.save(new TypeReservation("T01","Photographer"));
         this.typeReservationRepository.save(new TypeReservation("T10","Studio"));
@@ -46,9 +46,10 @@ public class StudioDataloader implements ApplicationRunner {
         
        
 
-         this.reservationRepository.save(new Reservation("R",1226.00,"จองช่างภาพ",1L,1L,1L,"เต็มวัน"));
-         this.reservationRepository.save(new Reservation("R",1000.00,"จองช่างภาพเเละสตูดิโอถ่ายภาพ",1L,1L,1L,"ครึ่งวัน"));
-         this.reservationRepository.save(new Reservation("R",1234.00,"จองช่างภาพ เต็มวัน",1L,1L,1L,"เต็มวัน"));
+         this.reservationRepository.save(new Reservation("R",1226.00,"จองช่างภาพ",m1,1L,1L,"เต็มวัน",new Date()));
+           this.reservationRepository.save(new Reservation("R",1226.00,"จองช่างภาพ2",m1,1L,1L,"เต็มวัน",new Date()));
+         this.reservationRepository.save(new Reservation("R",1000.00,"จองช่างภาพเเละสตูดิโอถ่ายภาพ",m2,1L,1L,"ครึ่งวัน", new Date()));
+         this.reservationRepository.save(new Reservation("R",1234.00,"จองช่างภาพ เต็มวัน",m3,1L,1L,"เต็มวัน", new Date()));
 
 	}
 

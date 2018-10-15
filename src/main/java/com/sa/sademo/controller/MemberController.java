@@ -47,11 +47,13 @@ class MemberController {
     @PostMapping("/member-list/{username}/pass/{pass}")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Map<String, Object>>   memberCheck(@PathVariable("username") String username,@PathVariable("pass") String pass) {
-       Member member  = memberRepository.findByUsernameAndPassword(username,pass);
+       Member member  = this.memberRepository.findByUsernameAndPassword(username,pass);
        if(member != null){
                 Map<String, Object> json = new HashMap<String, Object>();
                 json.put("success", true);
                 json.put("status", "found");
+                json.put("member", member);
+
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.add("Content-Type", "application/json; charset=UTF-8");
