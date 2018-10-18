@@ -41,7 +41,7 @@ class CancelReservationController {
     @GetMapping("/cancel-reser/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public CancelReservation canceReser(@PathVariable("id") Long id) {
-        Reservation r = this.reservationRepository.findByReserId(id);
+        Reservation r = this.reservationRepository.findByReservationId(id);
         return cancelReservationRepository.findByReservation(r);
     }
 
@@ -50,10 +50,10 @@ class CancelReservationController {
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Map<String, Object>>    CancelRecerSubmit(@PathVariable("id") Long id,@PathVariable("commemt") String commemt){
           try{
-                Reservation re1 =  this.reservationRepository.findByReserId(id); 
+                Reservation re1 =  this.reservationRepository.findByReservationId(id); 
 
-                Photographer ph1 = this.photographerRepository.findByPhotograpId(re1.getPhotographerId());
-                Studio std1 = this.studioRepository.findByStudioId(re1.getStudioId());
+                Photographer ph1 = this.photographerRepository.findByPhotograpId(re1.getPhotographer().getPhotograpId());
+                Studio std1 = this.studioRepository.findByStudioId(re1.getStudio().getStudioId());
 
 
                 String typeId;

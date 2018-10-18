@@ -16,10 +16,12 @@ public class StudioDataloader implements ApplicationRunner {
     private final PhotographerRepository photographerRepository;
     private final StudioRepository studioRepository;
     private final TypeReservationRepository typeReservationRepository;
+    private final TimetypeRepository timetypeRepository;
 
     @Autowired
-    public StudioDataloader(TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MemberRepository memberRepository,ReservationRepository reservationRepository) {
+    public StudioDataloader(TimetypeRepository timetypeRepository,TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MemberRepository memberRepository,ReservationRepository reservationRepository) {
         this.memberRepository = memberRepository;
+        this.timetypeRepository = timetypeRepository;
         this.reservationRepository = reservationRepository;
         this.photographerRepository = photographerRepository;
         this.studioRepository = studioRepository;
@@ -40,16 +42,26 @@ public class StudioDataloader implements ApplicationRunner {
         this.typeReservationRepository.save(new TypeReservation("T10","Studio"));
         this.typeReservationRepository.save(new TypeReservation("T11","Photographer&Studio"));
 
-        this.photographerRepository.save(new Photographer("โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354")); // fix
-        this.studioRepository.save(new Studio("THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865"));
+       Photographer p =  this.photographerRepository.save(new Photographer("โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354",1000.9)); // fix
+       Studio t = this.studioRepository.save(new Studio("THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865",5000.00));
 
         
-       
-
-         this.reservationRepository.save(new Reservation("R",1226.00,"จองช่างภาพ",m1,1L,1L,"เต็มวัน",new Date()));
-           this.reservationRepository.save(new Reservation("R",1226.00,"จองช่างภาพ2",m1,1L,1L,"เต็มวัน",new Date()));
-         this.reservationRepository.save(new Reservation("R",1000.00,"จองช่างภาพเเละสตูดิโอถ่ายภาพ",m2,1L,1L,"ครึ่งวัน", new Date()));
-         this.reservationRepository.save(new Reservation("R",1234.00,"จองช่างภาพ เต็มวัน",m3,1L,1L,"เต็มวัน", new Date()));
+        Timetype t1 = this.timetypeRepository.save(new Timetype ("เต็มวัน"));
+        Timetype t2 = this.timetypeRepository.save(new Timetype ("ครึ่งวัน"));
+      
+            this.reservationRepository.save(new Reservation(500.00,m1,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(1226.00,m1,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(1000.00,m1,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(1226.00,m2,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(226.00,m2,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(1226.00,m2,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(300.00,m3,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(6000.00,m3,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(5000.00,m3,p,t,t1,new Date()));
+            this.reservationRepository.save(new Reservation(1226.00,m3,p,t,t1,new Date()));
+        //   this.reservationRepository.save(new Reservation(1226.00,m1,1L,1L,t2,new Date()));
+        //  this.reservationRepository.save(new Reservation(1000.00,m2,1L,1L,t2,new Date()));
+        //  this.reservationRepository.save(new Reservation(1234.00,m3,1L,1L,t1, new Date()));
 
 	}
 

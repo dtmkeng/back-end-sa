@@ -27,7 +27,6 @@ class MemberController {
      //test req body
     @PostMapping("/userbody")
     public User bodyUser(@RequestBody User user){
-          
             return user;
     }
     

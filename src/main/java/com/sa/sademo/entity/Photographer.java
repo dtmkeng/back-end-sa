@@ -26,10 +26,12 @@ private String  name;
 private String  detail;
 @NotNull
 private String  phonenumber;
+private Double price; 
 private Photographer() {}
-public Photographer(String  name, String  detail, String  phonenumber ) { 
+public Photographer(String  name, String  detail, String  phonenumber,Double price) { 
         this.name  = name;
         this.detail = detail;
         this.phonenumber = phonenumber;
+        this.price = price;
     }
 }

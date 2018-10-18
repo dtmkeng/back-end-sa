@@ -40,13 +40,13 @@ class RescervationController {
     @GetMapping("/reservation-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Reservation reservationFinnd(@PathVariable("id") Long id) {
-        return reservationRepository.findByReserId(id);
+        return reservationRepository.findByReservationId(id);
     }
     @PostMapping("/mapdata/{reserid}/{name}")
     @CrossOrigin(origins = "http://localhost:4200")
     public  Reservation checkMap(@PathVariable("reserid") long reserid,@PathVariable("name") String name){
         Member memberid = this.memberRepository.findByName(name);
-        return reservationRepository.findByReserIdAndMemberId(reserid,memberid);
+        return reservationRepository.findByReservationIdAndMemberId(reserid,memberid);
     }
 
 

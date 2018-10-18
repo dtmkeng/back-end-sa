@@ -8,8 +8,8 @@ import java.util.Collection;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    Reservation findByReserId(Long reserId);
+    Reservation findByReservationId(Long reservationId);
     Collection<Reservation> findByMemberId(Member memberId);
-    Reservation findByReserIdAndMemberId(Long  reserId, Member memberId);
+    Reservation findByReservationIdAndMemberId(Long  reservationId, Member memberId);
 
 }

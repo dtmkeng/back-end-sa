@@ -26,12 +26,13 @@ private String  name;
 private String  detail;
 @NotNull
 private String  phonenumber;
-
+private Double price;
 private Studio() {}
 
-public Studio(String  name,  String  detail, String  phonenumber) { 
+public Studio(String  name,  String  detail, String  phonenumber,Double price) { 
         this.name = name;
         this.detail  = detail;
         this.phonenumber = phonenumber;
+        this.price = price;
     }
 }

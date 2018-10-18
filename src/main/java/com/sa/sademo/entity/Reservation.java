@@ -20,32 +20,31 @@ public class Reservation {
 
 @Id  
 @NotNull
-@SequenceGenerator(name="reserId_seq",sequenceName="reserId_seq")               
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="reserId_seq")     
-private Long reserId;
+@SequenceGenerator(name="resevationId_seq",sequenceName="resevationId_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="resevationId_seq")     
+private Long reservationId;
 
 @NotNull
-private Long photographerId;
+@ManyToOne
+private Photographer photographer;
 
 @NotNull
-private Long studioId;
+@ManyToOne
+private Studio studio;
 
 @NotNull
-private String  time;
+@ManyToOne
+private Timetype  time;
 
 
 @NotNull
 private Date  date;
 
-@NotNull
-private String detail;
 
 @NotNull
 @ManyToOne 
 private Member memberId;
 
-@NotNull
-private String  status;
 @NotNull
 private Double price; 
 
@@ -56,15 +55,12 @@ private CancelReservation cancelReservation;
 
 private Reservation() {}
 
-public Reservation(String  status, Double price, String detail,Member memberId,Long photographerId,Long studioId ,String time,Date  date) { 
-        this.reserId = reserId;
-        this.status = status;
+public Reservation(Double price,Member memberId,Photographer photographer,Studio studio,Timetype time,Date  date) { 
         this.price = price;
         this.time = time;
-        this.detail = detail;
         this.memberId = memberId;
-        this.studioId = studioId;
-        this.photographerId = photographerId;
+        this.studio = studio;
+        this.photographer = photographer;
         this.date = date;
     }
 }
