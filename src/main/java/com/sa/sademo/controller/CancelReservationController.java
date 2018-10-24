@@ -23,15 +23,15 @@ class CancelReservationController {
     private  PhotographerRepository photographerRepository;
     private  StudioRepository studioRepository;
     private  TypeReservationRepository typeReservationRepository;
-    private  MemberRepository memberRepository;
+    private  MembersRepository membersRepository;
 
-    public CancelReservationController(MemberRepository memberRepository,TypeReservationRepository typeReservationRepository, CancelReservationRepository cancelReservationRepository,ReservationRepository reservationRepository,PhotographerRepository photographerRepository,StudioRepository studioRepository) {
+    public CancelReservationController(MembersRepository membersRepository,TypeReservationRepository typeReservationRepository, CancelReservationRepository cancelReservationRepository,ReservationRepository reservationRepository,PhotographerRepository photographerRepository,StudioRepository studioRepository) {
         this.cancelReservationRepository  = cancelReservationRepository;
         this.reservationRepository = reservationRepository;
         this.photographerRepository =  photographerRepository;
         this.studioRepository = studioRepository;
         this.typeReservationRepository = typeReservationRepository;
-        this.memberRepository = memberRepository;
+        this.membersRepository = membersRepository;
     }
     @GetMapping("/cancel-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")

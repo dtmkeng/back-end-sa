@@ -1,8 +1,8 @@
 package sut.sa.g16.controller;
 import sut.sa.g16.entity.Reservation;
-import sut.sa.g16.entity.Member;
+import sut.sa.g16.entity.Members;
 import sut.sa.g16.repository.ReservationRepository;
-import sut.sa.g16.repository.MemberRepository;
+import sut.sa.g16.repository.MembersRepository;
 //time
 
 
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 class RescervationController {
      private  ReservationRepository reservationRepository;
-     private  MemberRepository memberRepository;
+     private  MembersRepository membersRepository;
 
-    public RescervationController(ReservationRepository reservationRepository, MemberRepository memberRepository) {
+    public RescervationController(ReservationRepository reservationRepository, MembersRepository membersRepository) {
         
         this.reservationRepository  = reservationRepository;
-        this.memberRepository = memberRepository;
+        this.membersRepository = membersRepository;
     }
 
     @GetMapping("/reservation-list")
@@ -33,7 +33,7 @@ class RescervationController {
     @GetMapping("/reservationmember/{memberid}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<Reservation> reservationUserList(@PathVariable("memberid") Long memberid) {
-        Member mem = this.memberRepository.findByMemberId(memberid);
+        Members mem = this.membersRepository.findByMemberId(memberid);
         return reservationRepository.findByMemberId(mem);
     }
 
@@ -45,7 +45,7 @@ class RescervationController {
     @PostMapping("/mapdata/{reserid}/{name}")
     @CrossOrigin(origins = "http://localhost:4200")
     public  Reservation checkMap(@PathVariable("reserid") long reserid,@PathVariable("name") String name){
-        Member memberid = this.memberRepository.findByName(name);
+        Members memberid = this.membersRepository.findByName(name);
         return reservationRepository.findByReservationIdAndMemberId(reserid,memberid);
     }
 
