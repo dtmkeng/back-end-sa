@@ -8,7 +8,7 @@ import java.util.*;
 @Entity
 @Data
 @Getter @Setter
-@NoArgsConstructor
+// @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Table ( name = "BookingEquipment")
@@ -29,7 +29,19 @@ public class BookingEquipment {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Members.class)
     private Members member;
+    public BookingEquipment(){}
+    public BookingEquipment(String equipmentName,String equipmentType,String equipmentBrand,
+                            int equipmentPrice,int totalDay,Date dateStart,Date dateEnd){
 
+        this.equipmentName = equipmentName;
+        this.equipmentType=equipmentType;
+        this.equipmentBrand = equipmentBrand;
+        this.equipmentPrice = equipmentPrice;
+        this.totalDay = totalDay;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+
+    }
     public Long getBookingId() {
         return bookingId;
     }
