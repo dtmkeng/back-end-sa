@@ -28,7 +28,7 @@ public class Bill {
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="mamber_id")
-    private Members member;
+    private Member member;
 
     @ManyToOne(fetch = FetchType.EAGER   , cascade = CascadeType.ALL)
     @JoinColumn(name="type_id")
@@ -36,7 +36,7 @@ public class Bill {
 
     protected Bill(){
     }
-    public Bill(Integer price, String name, String phonenumber,Date date,Reservation reservation,BookingEquipment bookingEquioment,Members member,Type type){
+    public Bill(Integer price, String name, String phonenumber,Date date,Reservation reservation,BookingEquipment bookingEquioment,Member member,Type type){
         this.type = type;
         this.price = price;
         this.name = name;
@@ -106,11 +106,11 @@ public class Bill {
         this.bookingEquioment = bookingEquioment;
     }
 
-    public Members getMember() {
+    public Member getMember() {
         return member;
     }
 
-    public void setMember(Members member) {
+    public void setMember(Member member) {
         this.member = member;
     }
 }

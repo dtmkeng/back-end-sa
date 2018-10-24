@@ -73,7 +73,7 @@ public class SendController {
     @PostMapping(path = "/datasend")
     public SendPhoto name(@RequestBody DataSendPhoto dataSendPhoto){
 
-        Members m = this.membersRepository.findByMemberId(dataSendPhoto.getMemberId());
+        Member m = this.membersRepository.findByMemberId(dataSendPhoto.getMemberId());
         Reservation r = this.reservationRepository.findByReservationId(dataSendPhoto.getReservationId());
 
         TypeDelivery td = this.typeDeliveryRepository.findByTypeDaliveryId(dataSendPhoto.getTypeDeliveryId());

@@ -11,13 +11,13 @@ import java.util.*;
 import java.time.LocalDate;
 @Entity  
 @Data  
-@Table(name="Members") 
-public class Members {
+@Table(name="Member") 
+public class Member {
 
 @Id  
 @NotNull
-@SequenceGenerator(name="members_seq",sequenceName="members_seq")               
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="members_seq")  
+@SequenceGenerator(name="member_seq",sequenceName="member_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="member_seq")  
 private Long memberId;
 @NotNull
 private String  username;
@@ -33,8 +33,8 @@ private String password;
 // private LocalDate date;
 
 
-private Members() {}
-public Members( String username,String password, String  name, String  email, String  phonenumber){
+private Member() {}
+public Member( String username,String password, String  name, String  email, String  phonenumber){
                 this.username = username;
                 this.password = password;
                 this.name = name;

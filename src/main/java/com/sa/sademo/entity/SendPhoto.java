@@ -15,7 +15,7 @@ public class SendPhoto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memberId")
-    private Members member;
+    private Member member;
 
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -35,7 +35,7 @@ public class SendPhoto {
     private TypeSize typeSize;
 
     
-    public SendPhoto(Members member, Reservation reservationId, TypeDelivery typeDeliveryId, TypePhoto typePhotoId, TypeSize typeSizeId,String name,
+    public SendPhoto(Member member, Reservation reservationId, TypeDelivery typeDeliveryId, TypePhoto typePhotoId, TypeSize typeSizeId,String name,
     String email,String address){
         this.member=member;
         this.reservation=reservationId;

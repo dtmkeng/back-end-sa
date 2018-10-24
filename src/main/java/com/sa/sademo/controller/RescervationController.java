@@ -1,6 +1,6 @@
 package sut.sa.g16.controller;
 import sut.sa.g16.entity.Reservation;
-import sut.sa.g16.entity.Members;
+import sut.sa.g16.entity.Member;
 import sut.sa.g16.repository.ReservationRepository;
 import sut.sa.g16.repository.MembersRepository;
 //time
@@ -33,7 +33,7 @@ class RescervationController {
     @GetMapping("/reservationmember/{memberid}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<Reservation> reservationUserList(@PathVariable("memberid") Long memberid) {
-        Members mem = this.membersRepository.findByMemberId(memberid);
+        Member mem = this.membersRepository.findByMemberId(memberid);
         return reservationRepository.findByMemberId(mem);
     }
 
@@ -45,7 +45,7 @@ class RescervationController {
     @PostMapping("/mapdata/{reserid}/{name}")
     @CrossOrigin(origins = "http://localhost:4200")
     public  Reservation checkMap(@PathVariable("reserid") long reserid,@PathVariable("name") String name){
-        Members memberid = this.membersRepository.findByName(name);
+        Member memberid = this.membersRepository.findByName(name);
         return reservationRepository.findByReservationIdAndMemberId(reserid,memberid);
     }
 

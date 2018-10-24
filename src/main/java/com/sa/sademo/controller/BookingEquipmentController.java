@@ -52,7 +52,7 @@ public class BookingEquipmentController {
     }
 
     @GetMapping(path = "/member", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Members> member() {
+    public Collection<Member> member() {
         return membersRepository.findAll().stream().collect(Collectors.toList());
     }
 

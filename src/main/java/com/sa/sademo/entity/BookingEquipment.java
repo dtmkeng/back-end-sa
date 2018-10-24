@@ -27,8 +27,8 @@ public class BookingEquipment {
     private @NonNull Date dateEnd;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Members.class)
-    private Members member;
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
+    private Member member;
     public BookingEquipment(){}
     public BookingEquipment(String equipmentName,String equipmentType,String equipmentBrand,
                             int equipmentPrice,int totalDay,Date dateStart,Date dateEnd){
@@ -102,11 +102,11 @@ public class BookingEquipment {
         this.dateEnd = dateEnd;
     }
 
-    public Members getMember() {
+    public Member getMember() {
         return member;
     }
 
-    public void setMember(Members member) {
+    public void setMember(Member member) {
         this.member = member;
     }
 

@@ -45,7 +45,7 @@ private Date  date;
 
 @NotNull
 @ManyToOne 
-private Members memberId;
+private Member memberId;
 
 @NotNull
 private Double price; 
@@ -60,7 +60,7 @@ private Bill bill;
 
 private Reservation() {}
 
-public Reservation(Double price,Members memberId,Photographer photographer,Studio studio,Timetype timetype,Date  date) { 
+public Reservation(Double price,Member memberId,Photographer photographer,Studio studio,Timetype timetype,Date  date) { 
         this.price = price;
         this.timetype = timetype;
         this.memberId = memberId;

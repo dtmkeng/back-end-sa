@@ -2,7 +2,7 @@ package sut.sa.g16.cotroller;
 import sut.sa.g16.entity.Bill;
 import sut.sa.g16.entity.Type;
 import sut.sa.g16.entity.BookingEquipment;
-import sut.sa.g16.entity.Members;
+import sut.sa.g16.entity.Member;
 import sut.sa.g16.entity.Reservation;
 import sut.sa.g16.model.DataBill;
 import sut.sa.g16.repository.*;
@@ -63,12 +63,12 @@ public class BillCon {
 
     /*=======================================================*/
     @GetMapping("/Member")
-    public Collection<Members> members() {
+    public Collection<Member> members() {
         return membersRepository.findAll().stream().collect(Collectors.toList());
     }
     @GetMapping("/Member-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Members memberFind(@PathVariable("id") Long id) {
+    public Member memberFind(@PathVariable("id") Long id) {
         return membersRepository.findByMemberId(id);
     }
     /*=======================================================*/
@@ -89,7 +89,7 @@ public class BillCon {
     @PostMapping(path = "/bills")
     public Bill databill(@RequestBody DataBill dataBill){
       //public Bill(Integer price, String name, String phonenumber,Date date,Reservation reservation,BookingEquipment bookingEquioment,Member member,String list){
-        Members m = this.membersRepository.findByMemberId(dataBill.getMemberId());
+        Member m = this.membersRepository.findByMemberId(dataBill.getMemberId());
 
         Reservation r = (dataBill.getReserId() != null)? this.reservationRepository.findByReservationId(dataBill.getReserId()) : null;
         BookingEquipment Book =  (dataBill.getBookingequId() != null) ? this.bookingRepository.findByBookingId(dataBill.getBookingequId()) : null;

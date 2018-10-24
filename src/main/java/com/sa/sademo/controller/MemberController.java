@@ -1,5 +1,5 @@
 package sut.sa.g16.controller;
-import sut.sa.g16.entity.Members;
+import sut.sa.g16.entity.Member;
 import sut.sa.g16.model.User;
 import sut.sa.g16.repository.MembersRepository;
 //time
@@ -32,21 +32,21 @@ class MemberController {
     
     @GetMapping("/member-list")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<Members> membersList() {
+    public Collection<Member> membersList() {
         return membersRepository.findAll().stream()
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/member-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Members memberFind(@PathVariable("id") Long id) {
+    public Member memberFind(@PathVariable("id") Long id) {
 
         return membersRepository.findByMemberId(id);
     }
     @PostMapping("/member-list/{username}/pass/{pass}")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Map<String, Object>>   memberCheck(@PathVariable("username") String username,@PathVariable("pass") String pass) {
-       Members member  = this.membersRepository.findByUsernameAndPassword(username,pass);
+       Member member  = this.membersRepository.findByUsernameAndPassword(username,pass);
        if(member != null){
                 Map<String, Object> json = new HashMap<String, Object>();
                 json.put("success", true);

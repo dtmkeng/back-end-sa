@@ -35,7 +35,7 @@ public class ReserController {
         return studioRepository.findAll().stream().collect(Collectors.toList());
     }
     @GetMapping(path = "/members", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Members> members() {
+    public Collection<Member> members() {
         return membersRepository.findAll().stream().collect(Collectors.toList());
     }
     @GetMapping(path = "/reservation", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -54,7 +54,7 @@ public class ReserController {
         Photographer p = this.photographerRepository.findByPhotograpId(reservationData.getIdphotographer());
         Studio s = this.studioRepository.findByStudioId(reservationData.getIdstudio());
         Double price = s.getPrice()+p.getPrice();
-        Members m = this.membersRepository.findByMemberId(reservationData.getMemberid());
+        Member m = this.membersRepository.findByMemberId(reservationData.getMemberid());
         Timetype t = this.timetypeRepository.findByTimetypeid(reservationData.getTypetimeid());
 
 
