@@ -17,22 +17,31 @@ public class StudioDataloader implements ApplicationRunner {
     private final StudioRepository studioRepository;
     private final TypeReservationRepository typeReservationRepository;
     private final TimetypeRepository timetypeRepository;
+    private final AdminRepository adminRepository;
+    private final CategoryRepository categoryRepository;
 
     @Autowired
-    public StudioDataloader(TimetypeRepository timetypeRepository,TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MembersRepository membersRepository,ReservationRepository reservationRepository) {
+    public StudioDataloader(CategoryRepository categoryRepository,AdminRepository adminRepository,TimetypeRepository timetypeRepository,TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MembersRepository membersRepository,ReservationRepository reservationRepository) {
         this.membersRepository = membersRepository;
         this.timetypeRepository = timetypeRepository;
         this.reservationRepository = reservationRepository;
         this.photographerRepository = photographerRepository;
         this.studioRepository = studioRepository;
         this.typeReservationRepository = typeReservationRepository;
+        this.adminRepository = adminRepository;
+        this.categoryRepository = categoryRepository;
     }
     
 	@Override
     // @Bean
 	public void run(ApplicationArguments args) throws Exception {
         
-
+       Admin a =  this.adminRepository.save(new Admin("เจ้าของ","00"));
+        this.adminRepository.save(new Admin("admin","000"));
+       Category c =  this.categoryRepository.save(new Category("งานแต่ง"));
+         this.categoryRepository.save(new Category("งานรับปริญญา"));
+         this.categoryRepository.save(new Category("อีเว้น"));
+         this.categoryRepository.save(new Category("งานบวช"));
        Members m1 = this.membersRepository.save(new Members("mem1","1234","john0","test0@test.com","081-13549"));
        Members m2 =  this.membersRepository.save(new Members("mem2","1234","john1","test1@test.com","071-13549"));
        Members m3 = this.membersRepository.save(new Members("mem3","1234","john2","test2@test.com","061-13549"));

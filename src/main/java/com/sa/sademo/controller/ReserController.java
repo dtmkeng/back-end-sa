@@ -30,10 +30,6 @@ public class ReserController {
         this.studioRepository = studioRepository;
         this.timetypeRepository = timetypeRepository;
     }
-    @GetMapping(path = "/photographer", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Photographer> photographer() {
-        return photographerRepository.findAll().stream().collect(Collectors.toList());
-    }
     @GetMapping(path = "/studio", produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<Studio> studio() {
         return studioRepository.findAll().stream().collect(Collectors.toList());
