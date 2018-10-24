@@ -26,12 +26,18 @@ public class StudioDataloader implements ApplicationRunner {
     private final BrandEquipmentRepository brandEquipmentRepository;
     private final EquipmentRepository equipmentRepository;
     private final TypeEquimentRepository typeEquimentRepository;
+    private final SendPhotoRepository sendPhotoRepository;
+    private final TypeDeliveryRepository typeDeliveryRepository;
+    private final TypePhotoRepository typePhotoRepository;
+    private final TypeSizeRepository typeSizeRepository;
 
     @Autowired
     public StudioDataloader(EquipmentRepository equipmentRepository,BrandEquipmentRepository brandEquipmentRepository,BookingRepository bookingRepository,TypeRepos typeRepos,CategoryRepository categoryRepository,
     AdminRepository adminRepository,TimetypeRepository timetypeRepository,TypeReservationRepository typeReservationRepository, 
     StudioRepository studioRepository, PhotographerRepository photographerRepository, MembersRepository membersRepository,
-    ReservationRepository reservationRepository,TypeEquimentRepository typeEquimentRepository) {
+    ReservationRepository reservationRepository,TypeEquimentRepository typeEquimentRepository,SendPhotoRepository sendPhotoRepository
+    ,TypeDeliveryRepository typeDeliveryRepository
+    ,TypePhotoRepository typePhotoRepository,TypeSizeRepository typeSizeRepository) {
         this.membersRepository = membersRepository;
         this.timetypeRepository = timetypeRepository;
         this.reservationRepository = reservationRepository;
@@ -45,6 +51,10 @@ public class StudioDataloader implements ApplicationRunner {
         this.brandEquipmentRepository = brandEquipmentRepository;
         this.equipmentRepository = equipmentRepository;
         this.typeEquimentRepository = typeEquimentRepository;
+        this.sendPhotoRepository=sendPhotoRepository;
+        this.typeDeliveryRepository=typeDeliveryRepository;
+        this.typePhotoRepository=typePhotoRepository;
+        this.typeSizeRepository=typeSizeRepository;
     }
     
 	@Override
@@ -73,6 +83,7 @@ public class StudioDataloader implements ApplicationRunner {
         Timetype t1 = this.timetypeRepository.save(new Timetype ("เต็มวัน"));
         Timetype t2 = this.timetypeRepository.save(new Timetype ("ครึ่งวัน"));
       
+      //demo ===================================================================================================
             this.reservationRepository.save(new Reservation(500.00,m1,p,t,t1,new Date()));
             this.reservationRepository.save(new Reservation(1226.00,m1,p,t,t1,new Date()));
             this.reservationRepository.save(new Reservation(1000.00,m1,p,t,t1,new Date()));
@@ -86,12 +97,25 @@ public class StudioDataloader implements ApplicationRunner {
 
          this.bookingRepository.save(new BookingEquipment("WAWOW","camera"," canon",200,
                2,new Date(),new Date()));
-            
+        // ==================================================================================================
         this.typeRepos.save(new Type("BookingEquipment"));
         this.typeRepos.save(new Type("Reservation"));
-        //   this.reservationRepository.save(new Reservation(1226.00,m1,1L,1L,t2,new Date()));
-        //  this.reservationRepository.save(new Reservation(1000.00,m2,1L,1L,t2,new Date()));
-        //  this.reservationRepository.save(new Reservation(1234.00,m3,1L,1L,t1, new Date()));
+
+        this.typeDeliveryRepository.save(new TypeDelivery("Kerry"));
+        this.typeDeliveryRepository.save(new TypeDelivery("Post"));
+        this.typeDeliveryRepository.save(new TypeDelivery("Self"));
+        
+
+        this.typePhotoRepository.save(new TypePhoto("Aulbum"));
+        this.typePhotoRepository.save(new TypePhoto("Single"));
+        this.typePhotoRepository.save(new TypePhoto("BigSize"));
+
+
+        this.typeSizeRepository.save(new TypeSize("A4"));
+        this.typeSizeRepository.save(new TypeSize("A3"));
+        this.typeSizeRepository.save(new TypeSize("4*6 in"));
+        this.typeSizeRepository.save(new TypeSize("FullSize"));
+       
 
          
          Stream.of("Canon","Nikon","Sony","Other").forEach(brand ->{
