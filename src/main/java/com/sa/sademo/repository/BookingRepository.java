@@ -10,4 +10,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface BookingRepository extends JpaRepository<BookingEquipment, Long>{
     BookingEquipment findByequipmentName(String equipmentName);
+    BookingEquipment findByBookingId(Long bookingId);
 }

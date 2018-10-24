@@ -1,6 +1,7 @@
 package sut.sa.g16.model;
 import lombok.*;
-import java.util.*;
+import java.util.Date;
+
 @Data
 public class ReservationData {
 

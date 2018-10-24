@@ -12,6 +12,4 @@ public class DataWorkschudule {
     private  Date date;
     private  Long timetypeid;
 
-
-
 }

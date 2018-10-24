@@ -52,8 +52,11 @@ private Double price;
 
 
 
-@OneToOne(fetch = FetchType.EAGER)
+@OneToOne(fetch = FetchType.LAZY)
 private CancelReservation cancelReservation;
+
+@OneToOne(fetch = FetchType.LAZY)
+private Bill bill;
 
 private Reservation() {}
 
