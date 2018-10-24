@@ -24,17 +24,19 @@ public class Reservation {
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="resevationId_seq")     
 private Long reservationId;
 
-@NotNull
-@ManyToOne
+
+@ManyToOne(fetch = FetchType.EAGER )
+@JoinColumn(name= "photograpId")
 private Photographer photographer;
 
-@NotNull
-@ManyToOne
+
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name= "studioId")
 private Studio studio;
 
-@NotNull
-@ManyToOne
-private Timetype  time;
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name= "timetypeid")
+private Timetype timetype;
 
 
 @NotNull
@@ -43,7 +45,7 @@ private Date  date;
 
 @NotNull
 @ManyToOne 
-private Member memberId;
+private Members memberId;
 
 @NotNull
 private Double price; 
@@ -55,9 +57,9 @@ private CancelReservation cancelReservation;
 
 private Reservation() {}
 
-public Reservation(Double price,Member memberId,Photographer photographer,Studio studio,Timetype time,Date  date) { 
+public Reservation(Double price,Members memberId,Photographer photographer,Studio studio,Timetype timetype,Date  date) { 
         this.price = price;
-        this.time = time;
+        this.timetype = timetype;
         this.memberId = memberId;
         this.studio = studio;
         this.photographer = photographer;

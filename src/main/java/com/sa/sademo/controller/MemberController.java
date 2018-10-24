@@ -1,7 +1,7 @@
 package sut.sa.g16.controller;
-import sut.sa.g16.entity.Member;
+import sut.sa.g16.entity.Members;
 import sut.sa.g16.model.User;
-import sut.sa.g16.repository.MemberRepository;
+import sut.sa.g16.repository.MembersRepository;
 //time
 // import java.time.LocalDateTime;
 // import java.time.format.DateTimeFormatter;
@@ -19,10 +19,10 @@ import java.util.*;
 
 @RestController
 class MemberController {
-    private  MemberRepository memberRepository;
+    private  MembersRepository membersRepository;
 
-    public MemberController(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
+    public MemberController(MembersRepository membersRepository) {
+        this.membersRepository = membersRepository;
     }
      //test req body
     @PostMapping("/userbody")
@@ -32,21 +32,21 @@ class MemberController {
     
     @GetMapping("/member-list")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<Member> membersList() {
-        return memberRepository.findAll().stream()
+    public Collection<Members> membersList() {
+        return membersRepository.findAll().stream()
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/member-list/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Member memberFind(@PathVariable("id") Long id) {
+    public Members memberFind(@PathVariable("id") Long id) {
 
-        return memberRepository.findByMemberId(id);
+        return membersRepository.findByMemberId(id);
     }
     @PostMapping("/member-list/{username}/pass/{pass}")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Map<String, Object>>   memberCheck(@PathVariable("username") String username,@PathVariable("pass") String pass) {
-       Member member  = this.memberRepository.findByUsernameAndPassword(username,pass);
+       Members member  = this.membersRepository.findByUsernameAndPassword(username,pass);
        if(member != null){
                 Map<String, Object> json = new HashMap<String, Object>();
                 json.put("success", true);

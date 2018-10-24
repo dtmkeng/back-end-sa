@@ -12,12 +12,12 @@ import java.time.LocalDate;
 @Entity  
 @Data  
 @Table(name="Members") 
-public class Member {
+public class Members {
 
 @Id  
 @NotNull
-@SequenceGenerator(name="member_seq",sequenceName="member_seq")               
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="member_seq")  
+@SequenceGenerator(name="members_seq",sequenceName="members_seq")               
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="members_seq")  
 private Long memberId;
 @NotNull
 private String  username;
@@ -33,8 +33,8 @@ private String password;
 // private LocalDate date;
 
 
-private Member() {}
-public Member( String username,String password, String  name, String  email, String  phonenumber){
+private Members() {}
+public Members( String username,String password, String  name, String  email, String  phonenumber){
                 this.username = username;
                 this.password = password;
                 this.name = name;

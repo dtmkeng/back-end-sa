@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.context.annotation.Bean;
 @Component
 public class StudioDataloader implements ApplicationRunner {
-    private final MemberRepository memberRepository;
+    private final MembersRepository membersRepository;
     private final ReservationRepository reservationRepository;
     private final PhotographerRepository photographerRepository;
     private final StudioRepository studioRepository;
@@ -19,8 +19,8 @@ public class StudioDataloader implements ApplicationRunner {
     private final TimetypeRepository timetypeRepository;
 
     @Autowired
-    public StudioDataloader(TimetypeRepository timetypeRepository,TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MemberRepository memberRepository,ReservationRepository reservationRepository) {
-        this.memberRepository = memberRepository;
+    public StudioDataloader(TimetypeRepository timetypeRepository,TypeReservationRepository typeReservationRepository, StudioRepository studioRepository, PhotographerRepository photographerRepository, MembersRepository membersRepository,ReservationRepository reservationRepository) {
+        this.membersRepository = membersRepository;
         this.timetypeRepository = timetypeRepository;
         this.reservationRepository = reservationRepository;
         this.photographerRepository = photographerRepository;
@@ -33,10 +33,10 @@ public class StudioDataloader implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
         
 
-       Member m1 = this.memberRepository.save(new Member("mem1","1234","john0","test0@test.com","081-13549"));
-       Member m2 =  this.memberRepository.save(new Member("mem2","1234","john1","test1@test.com","071-13549"));
-       Member m3 = this.memberRepository.save(new Member("mem3","1234","john2","test2@test.com","061-13549"));
-       Member m4 = this.memberRepository.save(new Member("mem4","1234","john3","test3@test.com","091-13549"));
+       Members m1 = this.membersRepository.save(new Members("mem1","1234","john0","test0@test.com","081-13549"));
+       Members m2 =  this.membersRepository.save(new Members("mem2","1234","john1","test1@test.com","071-13549"));
+       Members m3 = this.membersRepository.save(new Members("mem3","1234","john2","test2@test.com","061-13549"));
+       Members m4 = this.membersRepository.save(new Members("mem4","1234","john3","test3@test.com","091-13549"));
         
         this.typeReservationRepository.save(new TypeReservation("T01","Photographer"));
         this.typeReservationRepository.save(new TypeReservation("T10","Studio"));
