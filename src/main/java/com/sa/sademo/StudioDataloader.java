@@ -84,19 +84,19 @@ public class StudioDataloader implements ApplicationRunner {
         Timetype t2 = this.timetypeRepository.save(new Timetype ("ครึ่งวัน"));
       
       //demo ===================================================================================================
-            this.reservationRepository.save(new Reservation(500.00,m1,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(1226.00,m1,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(1000.00,m1,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(1226.00,m2,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(226.00,m2,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(1226.00,m2,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(300.00,m3,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(6000.00,m3,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(5000.00,m3,p,t,t1,new Date()));
-            this.reservationRepository.save(new Reservation(1226.00,m3,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(500.00,m1,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(1226.00,m1,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(1000.00,m1,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(1226.00,m2,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(226.00,m2,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(1226.00,m2,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(300.00,m3,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(6000.00,m3,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(5000.00,m3,p,t,t1,new Date()));
+        //     this.reservationRepository.save(new Reservation(1226.00,m3,p,t,t1,new Date()));
 
-         this.bookingRepository.save(new BookingEquipment("WAWOW","camera"," canon",200,
-               2,new Date(),new Date()));
+        //  this.bookingRepository.save(new BookingEquipment("WAWOW","camera"," canon",200,
+        //        2,new Date(),new Date()));
         // ==================================================================================================
         this.typeRepos.save(new Type("BookingEquipment"));
         this.typeRepos.save(new Type("Reservation"));

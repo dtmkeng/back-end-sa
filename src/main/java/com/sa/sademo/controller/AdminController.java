@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 import java.util.*;
+@RestController
 public class AdminController {
     private AdminRepository adminRepository;
 
@@ -38,7 +39,7 @@ public class AdminController {
             Map<String, Object> json = new HashMap<String, Object>();
             json.put("success", true);
             json.put("status", "found");
-            json.put("member", admin);
+            json.put("admin", admin);
 
 
             HttpHeaders headers = new HttpHeaders();

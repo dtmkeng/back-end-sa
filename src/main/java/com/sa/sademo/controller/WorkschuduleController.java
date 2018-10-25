@@ -83,15 +83,6 @@ public class WorkschuduleController {
     public Workschudule findWorkschudule(@PathVariable("id") Long id) {
         return workschuduleRepository.findByWorkschuduleid(id);
     }
-    @GetMapping(path = "/admin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Admin> admin() {
-        return adminRepository.findAll().stream().collect(Collectors.toList());
-    }
-    @GetMapping("/admin-list/{id}")
-    @CrossOrigin(origins = "http://localhost:4200")
-    public Admin Findadmin(@PathVariable("id") Long id) {
-        return adminRepository.findByAdminid(id);
-    }
     @PostMapping("/dataWorkschudule")
     public CategoryWork bodyCategoryWork(@RequestBody DataWorkschudule dataWorkschudule){
        // private  String nameid;
