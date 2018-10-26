@@ -22,6 +22,7 @@ public class BookingEquipmentController {
     private MembersRepository membersRepository;
     @Autowired
     private TypeEquimentRepository typeEquimentRepository;
+    
     @Autowired
     public BookingEquipmentController(BookingRepository bookingRepository, BrandEquipmentRepository brandEquipmentRepository, EquipmentRepository equipmentRepository,
                                       MembersRepository membersRepository, TypeEquimentRepository typeEquimentRepository) {
@@ -59,6 +60,13 @@ public class BookingEquipmentController {
     @GetMapping(path = "/type", produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<TypeEquipment> typeEquipment() {
         return typeEquimentRepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @GetMapping("/bookingmember/{memberid}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Collection<sut.sa.g16.entity.BookingEquipment> bookingUserList(@PathVariable("memberid") Long memberid) {
+        Member mem = this.membersRepository.findByMemberId(memberid);
+        return bookingRepository.findByMember(mem);
     }
 
     @PostMapping("/booking/{equipmentNameSelect}/{dateStartInput}/{dateEndInput}/{totalDayInput}/{memberIdInput}")

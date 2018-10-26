@@ -42,6 +42,10 @@ public class ReserController {
     public Collection<Reservation> reservation() {
         return reservationRepository.findAll().stream().collect(Collectors.toList());
     }
+    @GetMapping(path = "/reservationid/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  Reservation reservationUserList(@PathVariable("id") Long id) {
+        return reservationRepository.findByReservationId(id);
+    }
     @GetMapping(path = "/timetype", produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<Timetype> timetype() {
         return timetypeRepository.findAll().stream().collect(Collectors.toList());
@@ -49,18 +53,18 @@ public class ReserController {
 
 
     @PostMapping(path = "/data")
-    public ReservationData bodyUser(@RequestBody ReservationData reservationData){
+    public Reservation bodyUser(@RequestBody ReservationData reservationData){
        // Double price, Members members,Photographer photographer,Studio studio,Timetype timetype, Date date
-        Photographer p = this.photographerRepository.findByPhotograpId(reservationData.getIdphotographer());
-        Studio s = this.studioRepository.findByStudioId(reservationData.getIdstudio());
-        Double price = s.getPrice()+p.getPrice();
+        Photographer p = (reservationData.getIdphotographer()!=null) ? this.photographerRepository.findByPhotograpId(reservationData.getIdphotographer()) : null;
+        Studio s = (reservationData.getIdstudio()!=null) ? this.studioRepository.findByStudioId(reservationData.getIdstudio()) : null;
+        Double price = ((s!=null) ? s.getPrice() : 0.0) + ((p!=null)? p.getPrice() : 0.0);
         Member m = this.membersRepository.findByMemberId(reservationData.getMemberid());
         Timetype t = this.timetypeRepository.findByTimetypeid(reservationData.getTypetimeid());
 
 
         Reservation r=this.reservationRepository.save(new Reservation(price,m,p,s,t,reservationData.getDate()));
 
-        return reservationData;
+        return r;
     }
     
 }

@@ -60,9 +60,9 @@ public class StudioDataloader implements ApplicationRunner {
 	@Override
     // @Bean
 	public void run(ApplicationArguments args) throws Exception {
-        
-       Admin a =  this.adminRepository.save(new Admin("เจ้าของ","00"));
-        this.adminRepository.save(new Admin("admin","000"));
+        Admin a =  this.adminRepository.save(new Admin("pupaepup","1234"));
+        this.adminRepository.save(new Admin("admin","0000"));
+
        Category c =  this.categoryRepository.save(new Category("งานแต่ง"));
          this.categoryRepository.save(new Category("งานรับปริญญา"));
          this.categoryRepository.save(new Category("อีเว้น"));
@@ -76,9 +76,15 @@ public class StudioDataloader implements ApplicationRunner {
         this.typeReservationRepository.save(new TypeReservation("T10","Studio"));
         this.typeReservationRepository.save(new TypeReservation("T11","Photographer&Studio"));
 
-       Photographer p =  this.photographerRepository.save(new Photographer("โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354",1000.9)); // fix
+      Photographer p =  this.photographerRepository.save(new Photographer("โอ๊ต–ชัยสิทธิ์ จุนเจือดี","ช่างภาพงานแต่งงาน","081-201-2354",1000.9)); // fix
+        this.photographerRepository.save(new Photographer("ใหญ่–อมาตย์ นิมิตภาคย์","ช่างภาพงานแต่งงาน","081-201-2354",1000.9)); //
+        this.photographerRepository.save(new Photographer("ปุย–สุรชัย แสงสุวรรณ","ช่างภาพงานแต่งงาน","081-201-2354",1000.9)); //
+        this.photographerRepository.save(new Photographer("วิน–วิรุฬห์ กุลตัณฑ์","ช่างภาพงานแต่งงาน","081-201-2354",1000.9)); //
        Studio t = this.studioRepository.save(new Studio("THE GRAND CARPE DIEM STUDIO","สวนภายนอกและงานอินทีเรียร์คาแร็คเตอร์โดดเด่น รับแสงธรรมชาติจากสวนภายนอกเข้า","08-4110-9865",5000.00));
-
+         this.studioRepository.save(new Studio( "BENEDICT STUDIO", "ฉากพระราชวังอลังการเหมือนไปถ่ายปราสาทในต่างประเทศ", "091-838-0919",4000.00));
+        this.studioRepository.save(new Studio( "MANEEMEJAI'S HOME SPACE", "บ้านกึ่งสตูดิโอสีพาสเทล แนวคาเฟ่วินเทจเกาหลี", "086-523-0125",3500.00));
+        this.studioRepository.save(new Studio( "CAMELOTS THEME STUDIO", "ปราสาทคาเมล็อตของคิงอาเธอร์", "081-988-5521",4500.00));
+        this.studioRepository.save(new Studio( "AIRLAB", "ห้องสตูดิโอแสงธรรมชาติที่เหมาะกับการถ่ายภาพและวิดีโอ", "099-464-6535",3700.00));
         
         Timetype t1 = this.timetypeRepository.save(new Timetype ("เต็มวัน"));
         Timetype t2 = this.timetypeRepository.save(new Timetype ("ครึ่งวัน"));
